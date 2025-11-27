@@ -1,6 +1,6 @@
 {
   "name": "sanakhan/supplier-product-parser",
-  "description": "Supplier Product List Processor (CLI, PHP 7+, native, Composer autoload)",
+  "description": "Supplier Product List Processor",
   "type": "project",
   "require": {
     "php": ">=7.0"

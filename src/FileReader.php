@@ -8,8 +8,8 @@ use RuntimeException;
 class FileReader
 {
     /**
-     * Decide which reader to use based on file extension.
-     * Returns a generator (iterable) of associative rows.
+     * Decide to check which reader function to use based on the file extension.
+     * Returns a generator of associative rows.
      */
     public static function getRowGenerator(string $filePath): iterable
     {
@@ -26,10 +26,6 @@ class FileReader
         throw new UnsupportedFormatException("Unsupported file format: .$ext");
     }
 
-    /**
-     * CSV reader (streaming; good for large files).
-     * Yields associative arrays: [header => value].
-     */
     private static function readCsvFileRows(string $filePath): iterable
     {
         $ext = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));

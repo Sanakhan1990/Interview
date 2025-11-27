@@ -4,8 +4,8 @@ class UnsupportedFormatException extends Exception {}
 use App\FileReader;
 
 
-// ====== CLI Main function ====================================== 
-function main_cli(array $argv): int
+// ====== Main function ====================================== 
+function Main(array $argv): int
 {
     $options = getopt('', ['file:', 'unique-combinations:']);
 
@@ -30,7 +30,7 @@ function main_cli(array $argv): int
         return 1;
     }
 
-    $aggregatedCounts = [];  // key => count
+    $aggregatedCounts = [];  
     $rowIndex         = 0;
 
     try {
@@ -51,7 +51,7 @@ function main_cli(array $argv): int
                 continue;
             }
 
-            // First row -> validate required headers
+            // validation for required headers
             if ($rowIndex === 0) {
                 validate_required_headers(array_keys($row));
             }
@@ -75,7 +75,7 @@ function main_cli(array $argv): int
         return 1;
     }
 
-    // Write unique combinations CSV
+    // Write unique combinations CSV with count
     if (($fh = fopen($outputFile, 'w')) === false) {
         fwrite(STDERR, "Error: Cannot write to output file: $outputFile\n");
         return 1;
@@ -109,10 +109,6 @@ function main_cli(array $argv): int
     echo "Unique combinations written to: $outputFile" . PHP_EOL;
     return 0;
 }
-
-// ============================================================
-//  CLI helper
-// ============================================================
 
 function cli_print_error(): void
 {

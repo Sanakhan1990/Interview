@@ -22,7 +22,6 @@ Samsung,Galaxy S21,White,128GB,Unlocked,Grade B,Working
 CSV
         );
 
-        // Use the FileReader generator
         $generator = FileReader::getRowGenerator($csv);
 
         $aggregatedCounts = [];
@@ -32,7 +31,6 @@ CSV
             add_to_aggregated_counts($aggregatedCounts, $product);
         }
 
-        // Assert there are 3 rows aggregated into 2 unique combinations
         $this->assertCount(2, $aggregatedCounts);
 
         // Check counts for each combination
