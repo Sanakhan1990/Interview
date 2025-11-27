@@ -4,8 +4,8 @@ class UnsupportedFormatException extends Exception {}
 use App\FileReader;
 
 
-// ====== Main function ====================================== 
-function Main(array $argv): int
+// ====== Main function Starts Here================================ 
+function Main(): int
 {
     $options = getopt('', ['file:', 'unique-combinations:']);
 
